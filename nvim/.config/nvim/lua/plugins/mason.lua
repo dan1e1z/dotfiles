@@ -1,0 +1,37 @@
+return {
+	"williamboman/mason.nvim",
+	cmd = "Mason",
+	event = "BufReadPre",
+	build = ":MasonEnsureInstalled",
+	opts = {
+		ensure_installed = {
+			"bash-language-server",
+			"black",
+			"clang-format",
+			"clangd",
+			"cpptools",
+			"css-lsp",
+			"debugpy",
+			"eslint_d",
+			"gopls",
+			"html-lsp",
+			"js-debug-adapter",
+			"json-lsp",
+			"lua-language-server",
+			"luacheck",
+			"prettierd",
+			"pyright",
+			"shfmt",
+			"stylua",
+			"tailwindcss-language-server",
+			"typescript-language-server",
+		},
+		ui = {
+			icons = {
+				package_installed = "✓",
+				package_pending = "➜",
+				package_uninstalled = "✗",
+			},
+		},
+	},
+}

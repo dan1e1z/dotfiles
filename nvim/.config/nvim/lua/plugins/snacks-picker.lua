@@ -83,6 +83,50 @@ return {
 			end,
 			desc = "Git Status",
 		},
+		{
+			"<leader>gS",
+			function()
+				Snacks.picker.git_stash()
+			end,
+			desc = "Git Stash",
+		},
+		{
+			"<leader>gd",
+			function()
+				Snacks.picker.git_diff()
+			end,
+			desc = "Git Diff (Hunks)",
+		},
+
+		-- gh
+		{
+			"<leader>gi",
+			function()
+				Snacks.picker.gh_issue()
+			end,
+			desc = "GitHub Issues (open)",
+		},
+		{
+			"<leader>gI",
+			function()
+				Snacks.picker.gh_issue({ state = "all" })
+			end,
+			desc = "GitHub Issues (all)",
+		},
+		{
+			"<leader>gp",
+			function()
+				Snacks.picker.gh_pr()
+			end,
+			desc = "GitHub Pull Requests (open)",
+		},
+		{
+			"<leader>gP",
+			function()
+				Snacks.picker.gh_pr({ state = "all" })
+			end,
+			desc = "GitHub Pull Requests (all)",
+		},
 
 		-- LSP
 		{
@@ -122,3 +166,31 @@ return {
 	-- 	require("util.multigrep").setup()
 	-- end,
 }
+
+-- Non-Live Mode: fzf
+--
+-- Token	       Match type	                              Description
+-- sbtrkt	       fuzzy-match	                              Items that include sbtrkt characters in that order
+-- 'wild	       exact-match (quoted)	                      Items that include wild
+-- 'wild'	       exact-boundary-match (quoted both ends)	  Items that include wild at word boundaries
+-- ^music	       prefix-exact-match	                      Items that start with music
+-- .mp3$	       suffix-exact-match	                      Items that end with .mp3
+-- !fire	       inverse-exact-match	                      Items that do not include fire
+-- !^music	       inverse-prefix-exact-match	              Items that do not start with music
+-- !.mp3$	       inverse-suffix-exact-match	              Items that do not end with .mp3
+
+-- Live Mode: rg (regex by default)
+--
+-- Token / Pattern      Match type                           Description
+-- music                regex-substring                       Items containing “music”
+-- ^music               prefix-regex                          Items starting with “music”
+-- music$               suffix-regex                          Items ending with “music”
+-- \.mp3$               literal-suffix-regex                  Items ending with .mp3 (dot escaped)
+-- fire                 regex-substring                       Items containing “fire”
+-- ^(?!music)           inverse-prefix-regex                  Items not starting with “music”
+-- (?!.*fire)           inverse-regex                         Items not containing “fire”
+-- ^.*music.*\.mp3$     combined-regex                        Items containing “music” and ending with .mp3
+-- ^(?!.*\.log$).*$     inverse-suffix-regex                  Items not ending with .log
+
+-- Examples (Live) --AGRS
+-- search with single extensions: test -- -t=cpp-- search with multiple extensions: test -- -g={*.h,*.c,*.cpp}

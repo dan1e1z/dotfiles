@@ -3,5 +3,7 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = {},
 
-	vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>"),
+	vim.keymap.set("n", "<leader>td", function()
+		require("snacks").picker.todo_comments()
+	end, { desc = "Todo" }),
 }
